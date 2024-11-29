@@ -1,13 +1,11 @@
 "use client"
-import { formatDynamicAPIAccesses } from 'next/dist/server/app-render/dynamic-rendering';
 import './HomeStyle.css'
-import { useState } from 'react';
 
 export function Form(props){
     function Submit(formData){
         const name = formData.get("name");
         const status = formData.get("status");
-        props.submitFunction(name,status);
+        props.submitFunction(props.task != undefined ? props.task.id : null ,name,status);
         props.closeFunction();
     }
     return(
@@ -18,9 +16,9 @@ export function Form(props){
                 <h2 id="form-title">{props.name}</h2>
                 <button onClick={props.closeFunction} className="close-button">&times;</button>
             </div>
-            <input type="text" placeholder="Enter name" name='name'/>
-            <select name="status">
-                <option value="none" selected disabled hidden>Select status</option>
+            <input type="text" placeholder="Enter name" name='name' defaultValue = {props.task != undefined ? props.task.name : null }/>
+            <select name="status" defaultValue = {props.task != undefined ? props.task.status : null }>
+                {/* <option value="none" selected disabled hidden>Select status</option> */}
                 <option value="todo">To do</option>
                 <option value="inprogress">In progress</option>
                 <option value="done">Done</option>

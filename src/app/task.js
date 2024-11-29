@@ -6,10 +6,10 @@ export function Task(props){
     <div className="task">
         <div className="task-name">{props.name}</div>
         <div className="buttons">
-            <a>
+            <a onClick={() => props.editFunction(props.taskId)}>
                 <FaPencilAlt className='edit-icon'/> 
             </a>
-            <a>
+            <a onClick={() => props.deleteFunction(props.taskId)}>
                 <RiDeleteBinLine className='delete-icon'/>   
             </a>
         </div>
