@@ -11,6 +11,7 @@ export default function Home() {
   const [addFormVisible, setAddFormState] = useState(false);
   const [editFormVisible, setEditFormState] = useState(false);
   const [task, setTask] = useState([]);
+  const [id,setId] = useState(0);
   function handleEditForm(i){
     setEditFormState(!editFormVisible);
     setTask(tasks[i]);
@@ -19,10 +20,11 @@ export default function Home() {
     setAddFormState(!addFormVisible);
   }
   function addTask(taskId,taskName,taskStatus){
-    setTasks([...tasks, {id:tasks.length, name:taskName, status:taskStatus}]);
+    setTasks([...tasks, {id:id, name:taskName, status:taskStatus}]);
+    setId(id+1);
   }
   function editTask(taskId,taskName,taskStatus){
-    console.log(taskId+"-"+taskName+"-"+taskStatus);
+    setTasks([...tasks.filter((task) => task.id != taskId), {id:taskId, name:taskName, status:taskStatus}]);
   }
   function deleteTask(taskId){
     setTasks(tasks.filter((task) => task.id != taskId));

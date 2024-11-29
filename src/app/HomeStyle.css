@@ -76,12 +76,6 @@ body{
     display: flex;
     gap: 10px;
 }
-.fa-pencil{
-    color: white;
-}
-.fa-trash-o{
-    color: red;
-}
 .task-name{
     max-width: 60%;
 }

@@ -1,7 +1,6 @@
 import './HomeStyle.css'
 import { Task } from './task.js';
 export function Card(props){
-    // console.log(props.tasks);
     return(
         <div className="card">
             <div className="card-head">
